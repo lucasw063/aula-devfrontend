@@ -3,14 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta autor = "Lucas Wagner">
+    <meta name="author" content="Lucas Wagner Araujo" />
     <title>Dev Front End</title>
 </head>
-<body>
+<header>
+    <h1>Gerenciador de Tarefas Acadêmicas</h1>
+  </header>
 
-    <h1>Dev Front-End - Lucas Wagner</h1>
+  <!-- Conteúdo Principal da Aplicação (Landmark Main - Único) -->
+  <main>
 
-    <p>Esse é o inicio da atividade!!!</p>
-    
+    <!-- Região de Busca e Filtros -->
+    <section aria-labelledby="titulo-filtros">
+      <h2 id="titulo-filtros">Busca e Filtros</h2>
+      <form role="search">
+        <div>
+          <label for="busca-titulo">Buscar por título da tarefa:</label>
+          <input type="search" id="busca-titulo" name="busca" placeholder="Ex: Relatório de banco de dados">
+        </div>
+
+        <div>
+          <label for="filtro-status">Filtrar por Status:</label>
+          <select id="filtro-status" name="status">
+            <option value="">Todos os status</option>
+            <option value="a-fazer">A fazer</option>
+            <option value="em-andamento">Em andamento</option>
+            <option value="em-revisao">Em revisão</option>
+            <option value="concluida">Concluída</option>
+          </select>
+        </div>
+
+        <!-- Grupo de opções mutuamente exclusivas com fieldset e legend -->
+        <fieldset>
+          <legend>Filtrar por Prioridade:</legend>
+          <div>
+            <input type="radio" id="prio-todas" name="prioridade-filtro" value="" checked>
+            <label for="prio-todas">Todas</label>
+          </div>
+          <div>
+            <input type="radio" id="prio-baixa" name="prioridade-filtro" value="baixa">
+            <label for="prio-baixa">Baixa</label>
+          </div>
+          <div>
+            <input type="radio" id="prio-media" name="prioridade-filtro" value="media">
+            <label for="prio-media">Média</label>
+          </div>
+          <div>
+            <input type="radio" id="prio-alta" name="prioridade-filtro" value="alta">
+            <label for="prio-alta">Alta</label>
+          </div>
+        </fieldset>
+      </form>
+    </section>
+
+    <!-- Visão de Quadro (Quatro Agrupamentos por Status) -->
+    <section aria-labelledby="titulo-quadro">
+      <h2 id="titulo-quadro">Quadro de Tarefas</h2>
+
+      <!-- 1. Coluna: A Fazer -->
+      <section aria-labelledby="status-a-fazer">
+        <h3 id="status-a-fazer">A fazer</h3>
+        <ul>
+          <li>
+            <article>
+              <h4>Elaborar modelo ER do banco de dados</h4>
+              <p><strong>Projeto:</strong> Sistema de Gestão de Biblioteca (SGB-01)</p>
+              <p><strong>Responsável:</strong> Ana Silva</p>
+              <p><strong>Prazo:</strong> <time datetime="2026-08-20">20/08/2026</time></p>
+              <p><strong>Prioridade:</strong> Alta</p>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h4>Configurar repositório Git</h4>
+              <p><strong>Projeto:</strong> App de Finanças Pessoais (AFP-02)</p>
+              <p><strong>Responsável:</strong> Carlos Eduardo</p>
+              <p><strong>Prazo:</strong> <time datetime="2026-08-15">15/08/2026</time></p>
+              <p><strong>Prioridade:</strong> Média</p>
+            </article>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 2. Coluna: Em Andamento -->
+      <section aria-labelledby="status-em-andamento">
+        <h3 id="status-em-andamento">Em andamento</h3>
+        <ul>
+          <li>
+            <article>
+              <h4>Estruturar HTML semântico da E1</h4>
+              <p><strong>Projeto:</strong> Gerenciador Acadêmico (DEV-03)</p>
+              <p><strong>Responsável:</strong> João Pedro</p>
+              <p><strong>Prazo:</strong> <time datetime="2026-08-12">12/08/2026</time></p>
+              <p><strong>Prioridade:</strong> Alta</p>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h4>Escrever revisão bibliográfica</h4>
+              <p><strong>Projeto:</strong> Artigo Científico TCC (TCC-01)</p>
+              <p><strong>Responsável:</strong> Mariana Costa</p>
+              <p><strong>Prazo:</strong> <time datetime="2026-08-25">25/08/2026</time></p>
+              <p><strong>Prioridade:</strong> Baixa</p>
+            </article>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 3. Coluna: Em Revisão -->
+      <section aria-labelledby="status-em-revisao">
+        <h3 id="status-em-revisao">Em revisão</h3>
+        <ul>
+          <li>
+            <article>
+              <h4>Validar protótipo de alta fidelidade</h4>
+              <p><strong>Projeto:</strong> Redesign do Portal de Estágios (UX-04)</p>
+              <p><strong>Responsável:</strong> Beatriz Souza</p>
+              <p><strong>Prazo:</strong> <time datetime="2026-08-14">14/08/2026</time></p>
+              <p><strong>Prioridade:</strong> Média</p>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h4>Revisar código de autenticação JWT</h4>
+              <p><strong>Projeto:</strong> API de Eventos (API-02)</p>
+              <p><strong>Responsável:</strong> Lucas Lima</p>
+              <p><strong>Prazo:</strong> <time datetime="2026-08-13">13/08/2026</time></p>
+              <p><strong>Prioridade:</strong> Alta</p>
+            </article>
+          </li>
+        </ul>
+      </section>
+
+      <!-- 4. Coluna: Concluída -->
+      <section aria-labelledby="status-concluida">
+        <h3 id="status-concluida">Concluída</h3>
+        <ul>
+          <li>
+            <article>
+              <h4>Instalar ambiente de desenvolvimento (VS Code e Git)</h4>
+              <p><strong>Projeto:</strong> Gerenciador Acadêmico (DEV-03)</p>
+              <p><strong>Responsável:</strong> João Pedro</p>
+              <p><strong>Prazo:</strong> <time datetime="2026-08-05">05/08/2026</time></p>
+              <p><strong>Prioridade:</strong> Alta</p>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h4>Definir tema e escopo do projeto integrador</h4>
+              <p><strong>Projeto:</strong> Projeto Integrador (PI-01)</p>
+              <p><strong>Responsável:</strong> Grupo 4</p>
+              <p><strong>Prazo:</strong> <time datetime="2026-08-01">01/08/2026</time></p>
+              <p><strong>Prioridade:</strong> Baixa</p>
+            </article>
+          </li>
+        </ul>
+      </section>
+
+    </section>
+
+  </main>
+
+  <!-- Rodapé da Página (Landmark Contentinfo) -->
+  <footer>
+    <p>Desenvolvido por: <strong>Seu Nome Completo</strong></p>
+    <p>Disciplina: Desenvolvimento Frontend — 2026.2</p>
+  </footer>
+
 </body>
 </html>
