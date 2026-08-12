@@ -23,19 +23,37 @@
         </div>
 
         <div>
-          <label for="filtro-status">Filtrar por Status:</label>
-          <select id="filtro-status" name="status">
-            <option value="">Todos os status</option>
-            <option value="a-fazer">A fazer</option>
-            <option value="em-andamento">Em andamento</option>
-            <option value="em-revisao">Em revisão</option>
-            <option value="concluida">Concluída</option>
-          </select>
+        <fieldset>
+        <legend>Filtrar por Status:</legend>
+
+        <div>
+            <input type="radio" id="status-todos" name="status" value="" checked>
+            <label for="status-todos">Todos</label>
         </div>
 
-        <!-- Grupo de opções mutuamente exclusivas com fieldset e legend -->
-        <fieldset>
-          <legend>Filtrar por Prioridade:</legend>
+        <div>
+            <input type="radio" id="status-a-fazer" name="status" value="a-fazer">
+            <label for="status-a-fazer">A fazer</label>
+        </div>
+
+        <div>
+            <input type="radio" id="status-em-andamento" name="status" value="em-andamento">
+            <label for="status-em-andamento">Em andamento</label>
+        </div>
+
+        <div>
+            <input type="radio" id="status-em-revisao" name="status" value="em-revisao">
+            <label for="status-em-revisao">Em revisão</label>
+        </div>
+
+        <div>
+            <input type="radio" id="status-concluida" name="status" value="concluida">
+            <label for="status-concluida">Concluída</label>
+        </div>
+        </fieldset>
+                </div>
+
+            <legend>Filtrar por Prioridade:</legend>
           <div>
             <input type="radio" id="prio-todas" name="prioridade-filtro" value="" checked>
             <label for="prio-todas">Todas</label>
@@ -166,7 +184,7 @@
 
   <!-- Rodapé da Página (Landmark Contentinfo) -->
   <footer>
-    <p>Desenvolvido por: <strong>Seu Nome Completo</strong></p>
+    <p>Desenvolvido por: <strong>Lucas Wagner Araujo</strong></p>
     <p>Disciplina: Desenvolvimento Frontend — 2026.2</p>
   </footer>
 
