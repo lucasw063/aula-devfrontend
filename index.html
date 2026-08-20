@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html lang="pt-Br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Lucas Wagner Araujo" />
     <title>Dev Front End</title>
+    <link rel="stylesheet" href="estilos.css">
 </head>
-<header>
+<body>
+  <header>
     <h1>Gerenciador de Tarefas Acadêmicas</h1>
   </header>
 
@@ -53,24 +55,25 @@
         </fieldset>
                 </div>
 
+          <fieldset>
             <legend>Filtrar por Prioridade:</legend>
-          <div>
-            <input type="radio" id="prio-todas" name="prioridade-filtro" value="" checked>
-            <label for="prio-todas">Todas</label>
-          </div>
-          <div>
-            <input type="radio" id="prio-baixa" name="prioridade-filtro" value="baixa">
-            <label for="prio-baixa">Baixa</label>
-          </div>
-          <div>
-            <input type="radio" id="prio-media" name="prioridade-filtro" value="media">
-            <label for="prio-media">Média</label>
-          </div>
-          <div>
-            <input type="radio" id="prio-alta" name="prioridade-filtro" value="alta">
-            <label for="prio-alta">Alta</label>
-          </div>
-        </fieldset>
+            <div>
+              <input type="radio" id="prio-todas" name="prioridade-filtro" value="" checked>
+              <label for="prio-todas">Todas</label>
+            </div>
+            <div>
+              <input type="radio" id="prio-baixa" name="prioridade-filtro" value="baixa">
+              <label for="prio-baixa">Baixa</label>
+            </div>
+            <div>
+              <input type="radio" id="prio-media" name="prioridade-filtro" value="media">
+              <label for="prio-media">Média</label>
+            </div>
+            <div>
+              <input type="radio" id="prio-alta" name="prioridade-filtro" value="alta">
+              <label for="prio-alta">Alta</label>
+            </div>
+          </fieldset>
       </form>
     </section>
 
@@ -79,8 +82,8 @@
       <h2 id="titulo-quadro">Quadro de Tarefas</h2>
 
       <!-- 1. Coluna: A Fazer -->
-      <section aria-labelledby="status-a-fazer">
-        <h3 id="status-a-fazer">A fazer</h3>
+      <section aria-labelledby="coluna-a-fazer">
+        <h3 id="coluna-a-fazer">A fazer</h3>
         <ul>
           <li>
             <article>
@@ -104,8 +107,8 @@
       </section>
 
       <!-- 2. Coluna: Em Andamento -->
-      <section aria-labelledby="status-em-andamento">
-        <h3 id="status-em-andamento">Em andamento</h3>
+      <section aria-labelledby="coluna-em-andamento">
+        <h3 id="coluna-em-andamento">Em andamento</h3>
         <ul>
           <li>
             <article>
@@ -129,8 +132,8 @@
       </section>
 
       <!-- 3. Coluna: Em Revisão -->
-      <section aria-labelledby="status-em-revisao">
-        <h3 id="status-em-revisao">Em revisão</h3>
+      <section aria-labelledby="coluna-em-revisao">
+        <h3 id="coluna-em-revisao">Em revisão</h3>
         <ul>
           <li>
             <article>
@@ -154,8 +157,8 @@
       </section>
 
       <!-- 4. Coluna: Concluída -->
-      <section aria-labelledby="status-concluida">
-        <h3 id="status-concluida">Concluída</h3>
+      <section aria-labelledby="coluna-concluida">
+        <h3 id="coluna-concluida">Concluída</h3>
         <ul>
           <li>
             <article>
