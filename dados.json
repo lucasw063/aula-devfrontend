@@ -1,0 +1,60 @@
+{
+  "tarefas": [
+    {
+      "id": 1,
+      "titulo": "Revisar roteiro da apresentação final",
+      "status": "a-fazer",
+      "prioridade": "alta",
+      "prazo": "2026-09-08"
+    },
+    {
+      "id": 2,
+      "titulo": "Organizar referências bibliográficas",
+      "status": "a-fazer",
+      "prioridade": "media",
+      "prazo": "2026-09-10"
+    },
+    {
+      "id": 3,
+      "titulo": "Implementar layout mobile do dashboard",
+      "status": "em-andamento",
+      "prioridade": "alta",
+      "prazo": "2026-09-05"
+    },
+    {
+      "id": 4,
+      "titulo": "Corrigir fluxos de autenticação",
+      "status": "em-andamento",
+      "prioridade": "baixa",
+      "prazo": "2026-09-07"
+    },
+    {
+      "id": 5,
+      "titulo": "Validar protótipo de telas",
+      "status": "em-revisao",
+      "prioridade": "media",
+      "prazo": "2026-09-04"
+    },
+    {
+      "id": 6,
+      "titulo": "Revisar feedback do professor",
+      "status": "em-revisao",
+      "prioridade": "alta",
+      "prazo": "2026-09-03"
+    },
+    {
+      "id": 7,
+      "titulo": "Enviar checklist da semana",
+      "status": "concluida",
+      "prioridade": "baixa",
+      "prazo": "2026-09-01"
+    },
+    {
+      "id": 8,
+      "titulo": "Atualizar cronograma do projeto",
+      "status": "concluida",
+      "prioridade": "media",
+      "prazo": "2026-08-30"
+    }
+  ]
+}

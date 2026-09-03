@@ -12,7 +12,6 @@
     <h1>Gerenciador de Tarefas Acadêmicas</h1>
   </header>
 
-  <!-- Conteúdo Principal da Aplicação (Landmark Main - Único) -->
   <main>
 
     <!-- Região de Busca e Filtros -->
@@ -80,107 +79,8 @@
     <!-- Visão de Quadro (Quatro Agrupamentos por Status) -->
     <section aria-labelledby="titulo-quadro">
       <h2 id="titulo-quadro">Quadro de Tarefas</h2>
-
-      <!-- 1. Coluna: A Fazer -->
-      <section aria-labelledby="coluna-a-fazer">
-        <h3 id="coluna-a-fazer">A fazer</h3>
-        <ul>
-          <li>
-            <article>
-              <h4>Elaborar modelo ER do banco de dados</h4>
-              <p><strong>Projeto:</strong> Sistema de Gestão de Biblioteca (SGB-01)</p>
-              <p><strong>Responsável:</strong> Ana Silva</p>
-              <p><strong>Prazo:</strong> <time datetime="2026-08-20">20/08/2026</time></p>
-              <p><strong>Prioridade:</strong> Alta</p>
-            </article>
-          </li>
-          <li>
-            <article>
-              <h4>Configurar repositório Git</h4>
-              <p><strong>Projeto:</strong> App de Finanças Pessoais (AFP-02)</p>
-              <p><strong>Responsável:</strong> Carlos Eduardo</p>
-              <p><strong>Prazo:</strong> <time datetime="2026-08-15">15/08/2026</time></p>
-              <p><strong>Prioridade:</strong> Média</p>
-            </article>
-          </li>
-        </ul>
-      </section>
-
-      <!-- 2. Coluna: Em Andamento -->
-      <section aria-labelledby="coluna-em-andamento">
-        <h3 id="coluna-em-andamento">Em andamento</h3>
-        <ul>
-          <li>
-            <article>
-              <h4>Estruturar HTML semântico da E1</h4>
-              <p><strong>Projeto:</strong> Gerenciador Acadêmico (DEV-03)</p>
-              <p><strong>Responsável:</strong> João Pedro</p>
-              <p><strong>Prazo:</strong> <time datetime="2026-08-12">12/08/2026</time></p>
-              <p><strong>Prioridade:</strong> Alta</p>
-            </article>
-          </li>
-          <li>
-            <article>
-              <h4>Escrever revisão bibliográfica</h4>
-              <p><strong>Projeto:</strong> Artigo Científico TCC (TCC-01)</p>
-              <p><strong>Responsável:</strong> Mariana Costa</p>
-              <p><strong>Prazo:</strong> <time datetime="2026-08-25">25/08/2026</time></p>
-              <p><strong>Prioridade:</strong> Baixa</p>
-            </article>
-          </li>
-        </ul>
-      </section>
-
-      <!-- 3. Coluna: Em Revisão -->
-      <section aria-labelledby="coluna-em-revisao">
-        <h3 id="coluna-em-revisao">Em revisão</h3>
-        <ul>
-          <li>
-            <article>
-              <h4>Validar protótipo de alta fidelidade</h4>
-              <p><strong>Projeto:</strong> Redesign do Portal de Estágios (UX-04)</p>
-              <p><strong>Responsável:</strong> Beatriz Souza</p>
-              <p><strong>Prazo:</strong> <time datetime="2026-08-14">14/08/2026</time></p>
-              <p><strong>Prioridade:</strong> Média</p>
-            </article>
-          </li>
-          <li>
-            <article>
-              <h4>Revisar código de autenticação JWT</h4>
-              <p><strong>Projeto:</strong> API de Eventos (API-02)</p>
-              <p><strong>Responsável:</strong> Lucas Lima</p>
-              <p><strong>Prazo:</strong> <time datetime="2026-08-13">13/08/2026</time></p>
-              <p><strong>Prioridade:</strong> Alta</p>
-            </article>
-          </li>
-        </ul>
-      </section>
-
-      <!-- 4. Coluna: Concluída -->
-      <section aria-labelledby="coluna-concluida">
-        <h3 id="coluna-concluida">Concluída</h3>
-        <ul>
-          <li>
-            <article>
-              <h4>Instalar ambiente de desenvolvimento (VS Code e Git)</h4>
-              <p><strong>Projeto:</strong> Gerenciador Acadêmico (DEV-03)</p>
-              <p><strong>Responsável:</strong> João Pedro</p>
-              <p><strong>Prazo:</strong> <time datetime="2026-08-05">05/08/2026</time></p>
-              <p><strong>Prioridade:</strong> Alta</p>
-            </article>
-          </li>
-          <li>
-            <article>
-              <h4>Definir tema e escopo do projeto integrador</h4>
-              <p><strong>Projeto:</strong> Projeto Integrador (PI-01)</p>
-              <p><strong>Responsável:</strong> Grupo 4</p>
-              <p><strong>Prazo:</strong> <time datetime="2026-08-01">01/08/2026</time></p>
-              <p><strong>Prioridade:</strong> Baixa</p>
-            </article>
-          </li>
-        </ul>
-      </section>
-
+      <div id="status" role="status" aria-live="polite" aria-atomic="true"></div>
+      <div id="quadro-tarefas" aria-live="polite"></div>
     </section>
 
   </main>
@@ -191,5 +91,6 @@
     <p>Disciplina: Desenvolvimento Frontend — 2026.2</p>
   </footer>
 
+  <script type="module" src="./script.js"></script>
 </body>
 </html>
