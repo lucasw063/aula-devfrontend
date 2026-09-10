@@ -73,6 +73,16 @@
               <label for="prio-alta">Alta</label>
             </div>
           </fieldset>
+
+          <div>
+            <label for="ordenacao">Ordenar por prazo:</label>
+            <select id="ordenacao" name="ordenacao">
+              <option value="prazo-asc">Mais próximo primeiro</option>
+              <option value="prazo-desc">Mais distante primeiro</option>
+            </select>
+          </div>
+
+          <button type="button" id="limpar-filtros">Limpar filtros</button>
       </form>
     </section>
 
@@ -80,7 +90,7 @@
     <section aria-labelledby="titulo-quadro">
       <h2 id="titulo-quadro">Quadro de Tarefas</h2>
       <div id="status" role="status" aria-live="polite" aria-atomic="true"></div>
-      <div id="quadro-tarefas" aria-live="polite"></div>
+      <div id="quadro-tarefas"></div>
     </section>
 
   </main>

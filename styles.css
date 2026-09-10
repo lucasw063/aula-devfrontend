@@ -365,3 +365,27 @@ footer p {
     width: min(100% - 4rem, 72rem);
   }
 }
+
+select,
+button {
+  min-height: 2.75rem;
+  margin-top: var(--espaco-1);
+  padding: var(--espaco-2) var(--espaco-3);
+  color: var(--cor-texto);
+  background: var(--cor-cartao);
+  border: 0.125rem solid var(--cor-borda);
+  border-radius: var(--raio);
+  font: inherit;
+}
+
+button {
+  align-self: end;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+button:hover,
+button:focus-visible {
+  border-color: var(--cor-foco);
+  background: #e0f2fe;
+}
