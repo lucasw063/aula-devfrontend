@@ -1,106 +1,240 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!doctype html>
+<html lang="pt-BR" data-motion="on" data-light="nox">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Lucas Wagner Araujo" />
-    <title>Dev Front End</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta name="author" content="Lucas Wagner Araujo">
+  <meta name="description" content="Uma biblioteca encantada para organizar tarefas. Projeto acadêmico em HTML, CSS e JavaScript, sem dependências externas.">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src data:; font-src 'none'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Sala de Estudos · Madame Nora e o correio da torre</title>
+  <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <header>
-    <h1>Gerenciador de Tarefas Acadêmicas</h1>
-  </header>
-
-  <main>
-
-    <!-- Região de Busca e Filtros -->
-    <section aria-labelledby="titulo-filtros">
-      <h2 id="titulo-filtros">Busca e Filtros</h2>
-      <form role="search">
-        <div>
-          <label for="busca-titulo">Buscar por título da tarefa:</label>
-          <input type="search" id="busca-titulo" name="busca" placeholder="Ex: Relatório de banco de dados">
+  <a href="#quadro" class="skip-link">Pular para o quadro de tarefas</a>
+  <div class="shell">
+    <header class="masthead">
+      <div class="brand">
+        <span class="crest" aria-hidden="true">H</span>
+        <div><span class="brand-name">HOGWARTS</span><span class="brand-sub">BIBLIOTECA · ARQUIVO ACADÊMICO</span></div>
+      </div>
+      <div class="ambience-controls" aria-label="Controles do ambiente">
+        <button class="toggle light-spell" id="light-toggle" type="button" aria-pressed="false">
+          <svg class="spell-icon" viewBox="0 0 18 18" fill="none" stroke="currentColor" aria-hidden="true">
+            <path d="M3 15 11 7 M2 14 4 16" stroke-width="1.5"/>
+            <path class="wand-star" d="M12 0V8 M8 4H16 M9 1 15 7 M9 7 15 1" stroke-width="1"/>
+          </svg><span id="light-label">Lumos · acender</span>
+        </button>
+        <button class="toggle" id="motion-toggle" type="button" aria-pressed="true">
+          <span class="switch-dot" aria-hidden="true"></span><span id="motion-label">Animações ligadas</span>
+        </button>
+        <button class="toggle" id="lightning-toggle" type="button" aria-pressed="true">
+          <span class="switch-dot" aria-hidden="true"></span><span id="lightning-label">Relâmpagos ligados</span>
+        </button>
+      </div>
+    </header>
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="dust" aria-hidden="true">
+          <i style="--x:8%;--y:80%;--delay:-3s;--duration:19s"></i>
+          <i style="--x:20%;--y:45%;--delay:-9s;--duration:24s"></i>
+          <i style="--x:42%;--y:86%;--delay:-7s;--duration:17s"></i>
+          <i style="--x:49%;--y:19%;--delay:-11s;--duration:22s"></i>
+          <i style="--x:62%;--y:76%;--delay:-4s;--duration:23s"></i>
+          <i style="--x:90%;--y:88%;--delay:-12s;--duration:20s"></i>
         </div>
-
-        <div>
-        <fieldset>
-        <legend>Filtrar por Status:</legend>
-
-        <div>
-            <input type="radio" id="status-todos" name="status" value="" checked>
-            <label for="status-todos">Todos</label>
-        </div>
-
-        <div>
-            <input type="radio" id="status-a-fazer" name="status" value="a-fazer">
-            <label for="status-a-fazer">A fazer</label>
-        </div>
-
-        <div>
-            <input type="radio" id="status-em-andamento" name="status" value="em-andamento">
-            <label for="status-em-andamento">Em andamento</label>
-        </div>
-
-        <div>
-            <input type="radio" id="status-em-revisao" name="status" value="em-revisao">
-            <label for="status-em-revisao">Em revisão</label>
-        </div>
-
-        <div>
-            <input type="radio" id="status-concluida" name="status" value="concluida">
-            <label for="status-concluida">Concluída</label>
-        </div>
-        </fieldset>
-                </div>
-
-          <fieldset>
-            <legend>Filtrar por Prioridade:</legend>
-            <div>
-              <input type="radio" id="prio-todas" name="prioridade-filtro" value="" checked>
-              <label for="prio-todas">Todas</label>
+        <div class="hero-copy">
+          <p class="eyebrow">O seu arquivo · semestre 2026.2</p>
+          <h1 id="page-title">Sala de <em>estudos.</em></h1>
+          <p class="intro">Tarefas acadêmicas, um pergaminho de cada vez.</p>
+          <div class="semester-stats" aria-label="Resumo de todas as tarefas">
+            <div class="stat"><strong id="stat-pending">—</strong><span>pendentes</span></div>
+            <div class="stat"><strong id="stat-done">—</strong><span>concluídas</span></div>
+            <div class="semester-progress">
+              <div class="progress-label"><span>Progresso do quadro</span><strong id="progress-label">0%</strong></div>
+              <div class="track" id="progress" role="progressbar" aria-label="Progresso de todas as tarefas" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"><div class="track-fill" id="progress-fill"></div></div>
             </div>
-            <div>
-              <input type="radio" id="prio-baixa" name="prioridade-filtro" value="baixa">
-              <label for="prio-baixa">Baixa</label>
-            </div>
-            <div>
-              <input type="radio" id="prio-media" name="prioridade-filtro" value="media">
-              <label for="prio-media">Média</label>
-            </div>
-            <div>
-              <input type="radio" id="prio-alta" name="prioridade-filtro" value="alta">
-              <label for="prio-alta">Alta</label>
-            </div>
-          </fieldset>
-
-          <div>
-            <label for="ordenacao">Ordenar por prazo:</label>
-            <select id="ordenacao" name="ordenacao">
-              <option value="prazo-asc">Mais próximo primeiro</option>
-              <option value="prazo-desc">Mais distante primeiro</option>
-            </select>
           </div>
-
-          <button type="button" id="limpar-filtros">Limpar filtros</button>
-      </form>
-    </section>
-
-    <!-- Visão de Quadro (Quatro Agrupamentos por Status) -->
-    <section aria-labelledby="titulo-quadro">
-      <h2 id="titulo-quadro">Quadro de Tarefas</h2>
-      <div id="status" role="status" aria-live="polite" aria-atomic="true"></div>
-      <div id="quadro-tarefas"></div>
-    </section>
-
-  </main>
-
-  <!-- Rodapé da Página (Landmark Contentinfo) -->
-  <footer>
-    <p>Desenvolvido por: <strong>Lucas Wagner Araujo</strong></p>
-    <p>Disciplina: Desenvolvimento Frontend — 2026.2</p>
-  </footer>
-
+          <div class="owl-mail" id="owl-mail">
+            <button type="button" class="owl-toggle" id="owl-toggle" aria-expanded="false" aria-controls="owl-letter">
+              <svg class="owl-art" viewBox="0 0 82 92" aria-hidden="true">
+                <ellipse cx="41" cy="86" rx="30" ry="3" fill="#000" opacity=".18"/>
+                <path d="M20 40C12 57 17 76 31 81H52C68 73 69 54 62 40Z" fill="#8d7557" stroke="#574533" stroke-width="1.3"/>
+                <path d="M28 39C21 61 27 78 41 82C58 73 61 59 55 39Z" fill="#d1bc95"/>
+                <path d="M22 44C15 54 16 72 26 78L32 65Z M61 44C67 55 65 72 55 78L50 65Z" fill="#796149"/>
+                <g stroke="#a5916d" stroke-width="1.1" fill="none" stroke-linecap="round">
+                  <path d="M33 52 35 55 37 52 M43 52 45 55 47 52 M35 61 37 64 39 61 M45 61 47 64 49 61 M39 69 41 72 43 69"/>
+                </g>
+                <g class="owl-head">
+                  <path d="M16 24C14 7 30 4 41 9C57 2 69 11 67 28C65 43 49 50 41 48C28 47 15 38 16 24Z" fill="#9c8260" stroke="#604d38" stroke-width="1.3"/>
+                  <path d="M41 16C23 2 14 21 23 35C28 42 35 42 41 46C47 42 55 42 60 35C69 21 59 2 41 16Z" fill="#e7d8b9"/>
+                  <path d="M41 17V34" fill="none" stroke="#b89d78" stroke-width="1"/>
+                  <g class="owl-eyes">
+                    <ellipse cx="30" cy="27" rx="7" ry="8" fill="#79654e"/>
+                    <ellipse cx="52" cy="27" rx="7" ry="8" fill="#79654e"/>
+                    <ellipse cx="30" cy="27" rx="4.3" ry="6" fill="#231f1d"/>
+                    <ellipse cx="52" cy="27" rx="4.3" ry="6" fill="#231f1d"/>
+                    <circle cx="28.5" cy="25" r="1.5" fill="#f7ecd3"/><circle cx="50.5" cy="25" r="1.5" fill="#f7ecd3"/>
+                  </g>
+                  <path d="M38 34 41 41 44 34 41 32Z" fill="#8c663c"/>
+                  <path d="M20 17 18 10 M62 17 65 11" stroke="#bca17a" stroke-width="1.4" fill="none"/>
+                </g>
+                <g stroke="#786040" stroke-width="1" stroke-linejoin="round">
+                  <path d="M20 67H62V86H20Z" fill="#e9d8b5"/>
+                  <path d="M20 86 37 72H45L62 86" fill="#d8c19a"/>
+                  <path d="M20 67 41 80 62 67Z" fill="#f3e4c9"/>
+                </g>
+                <circle cx="41" cy="79" r="4" fill="#843d42"/><circle cx="41" cy="79" r="2.5" fill="none" stroke="#ba827a" stroke-width=".7"/>
+                <path d="M26 64V69 M29 65V69 M52 65V69 M55 64V69" stroke="#b79a6b" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <span class="mail-copy"><span class="mail-overline">CORREIO DA TORRE</span><span class="mail-title">Próximo prazo</span><span class="mail-hint" id="owl-hint">Uma carta para você.</span></span>
+              <span class="mail-action"><span class="mail-action-label" id="owl-action-label">Abrir carta</span><span class="mail-chevron" aria-hidden="true">⌄</span></span>
+            </button>
+            <section class="owl-letter" id="owl-letter" aria-labelledby="owl-title" hidden>
+              <div class="letter-top"><span class="letter-eyebrow" id="owl-eyebrow">LEMBRETE DE ENTREGA</span><button type="button" class="letter-close" id="owl-close" aria-label="Fechar carta">×</button></div>
+              <h2 id="owl-title"></h2>
+              <p class="letter-course" id="owl-course"></p>
+              <div class="letter-deadline" id="owl-deadline"><strong id="owl-relative"></strong><span>Prazo: <time id="owl-date"></time></span></div>
+              <p class="letter-meta" id="owl-meta"></p>
+              <button type="button" class="letter-find" id="owl-find">Localizar no quadro <span aria-hidden="true">↓</span></button>
+              <p class="letter-note" id="owl-note">Prazos vencidos vêm primeiro. A carta considera todas as tarefas.</p>
+            </section>
+            <span class="sr-only" id="owl-announcement" role="status" aria-live="polite"></span>
+          </div>
+        </div>
+        <div class="window-scene">
+          <div class="window-rim">
+            <div class="window-glass">
+              <canvas id="weather" aria-hidden="true"></canvas>
+              <svg class="tracery" viewBox="0 0 260 254" preserveAspectRatio="none" aria-hidden="true">
+                <g fill="none" stroke="#121e2a" stroke-width="8">
+                  <path d="M130 0 V254 M0 155 H260 M48 155 V254 M212 155 V254"/>
+                  <path d="M130 110 C48 84 72 33 130 15 C188 33 212 84 130 110Z"/>
+                </g>
+                <g fill="none" stroke="#736d55" stroke-width="1.15">
+                  <path d="M126 0 V254 M134 0 V254 M0 151 H260 M0 159 H260 M44 159 V254 M52 159 V254 M208 159 V254 M216 159 V254"/>
+                  <path d="M130 110 C48 84 72 33 130 15 C188 33 212 84 130 110Z"/>
+                </g>
+              </svg>
+              <div class="glass-sheen" aria-hidden="true"></div>
+            </div>
+            <button type="button" class="nora-perch" id="nora-greet" aria-label="Cumprimentar Madame Nora" aria-describedby="nora-hint">
+              <svg class="nora-art" viewBox="0 0 180 185" aria-hidden="true">
+                <defs>
+                  <linearGradient id="nora-fur" x1="0" x2="1" y1="0" y2=".4"><stop stop-color="#9a978d"/><stop offset=".42" stop-color="#6f736e"/><stop offset="1" stop-color="#3e494a"/></linearGradient>
+                  <linearGradient id="nora-face" x1="0" x2=".9" y1="0" y2="1"><stop stop-color="#9a998e"/><stop offset="1" stop-color="#59635f"/></linearGradient>
+                </defs>
+                <ellipse cx="106" cy="177" rx="57" ry="5" fill="#0a1017" opacity=".3"/>
+                <path class="nora-tail" d="M126 161C160 173 176 148 160 132C149 121 145 112 152 104" fill="none" stroke="#53615e" stroke-width="13" stroke-linecap="round"/>
+                <g class="nora-pose">
+                  <path d="M80 87C74 105 80 113 71 132L65 140 70 142 65 155 71 154 66 166C77 179 126 179 140 166L135 157 140 156 133 148C136 124 122 115 124 94Z" fill="url(#nora-fur)" stroke="#384343" stroke-width="1.3"/>
+                  <path d="M80 94 91 116 85 133 91 130 88 146 95 140 102 151 110 143 113 133 117 138 118 120 127 126 120 102Z" fill="#a7a89b" opacity=".62"/>
+                  <path d="M121 126C135 134 139 155 128 166" fill="none" stroke="#42504d" stroke-width="5"/>
+                  <path d="M83 130 85 168 M105 128 111 169" fill="none" stroke="#7e887c" stroke-width="13" stroke-linecap="round"/>
+                  <path d="M88 149 81 151 M89 157 82 159 M113 148 106 151 M115 157 108 159" fill="none" stroke="#454f49" stroke-width="3"/>
+                  <path d="M76 170Q85 163 94 170L97 176H73Q71 172 76 170Z M103 171Q112 163 122 170L127 176H101Z" fill="#9a9f90" stroke="#505b52" stroke-width="1"/>
+                  <path d="M80 172V175 M86 172V175 M108 172V175 M115 172V175" stroke="#5c655b" stroke-width="1"/>
+                  <g class="nora-head">
+                    <path d="M71 64 70 34 91 50Q105 46 117 48L137 29 133 65 140 76 135 78 141 89 133 88 131 99 123 97Q112 113 96 106L85 103 81 106 78 96 71 99 73 90 66 90 72 79 68 78Z" fill="url(#nora-face)" stroke="#374241" stroke-width="1.3"/>
+                    <path d="M75 42 78 63 87 56Z M130 40 119 56 130 62Z" fill="#8d7a72"/>
+                    <path d="M97 50 101 64 106 54 111 63 116 49 M76 68 88 71 M73 83 85 84 M128 67 135 63 M126 82 138 77" fill="none" stroke="#43504c" stroke-width="3"/>
+                    <g class="nora-eyes">
+                      <path d="M79 75Q88 66 97 75Q89 84 79 75Z M110 75Q120 65 129 73Q122 84 110 75Z" fill="#c2a55b" stroke="#2d3835" stroke-width="1.8"/>
+                      <ellipse cx="89" cy="75" rx="1.7" ry="6" fill="#172522"/><ellipse cx="120" cy="75" rx="1.7" ry="6" fill="#172522"/>
+                      <circle cx="86.5" cy="73" r="1.2" fill="#efdfaa"/><circle cx="117.5" cy="72" r="1.2" fill="#efdfaa"/>
+                    </g>
+                    <path d="M87 91Q94 80 103 85Q114 79 123 89Q119 101 106 100Q93 104 87 91Z" fill="#bec0ad" opacity=".8"/>
+                    <path d="M100 85 105 90 110 85Q105 82 100 85Z" fill="#70605c"/>
+                    <path d="M105 90V94Q100 99 97 94 M105 94Q110 98 113 93" fill="none" stroke="#44524a" stroke-width="1.2"/>
+                    <g stroke="#d5d2bb" stroke-width=".9" stroke-linecap="round" opacity=".82">
+                      <path d="M92 89 59 82 M92 92 54 93 M93 96 62 103 M117 88 148 78 M117 92 152 90 M117 95 148 102"/>
+                    </g>
+                  </g>
+                </g>
+              </svg>
+            </button>
+            <span class="nora-thought" id="nora-thought" role="status" hidden>Mrrr… de olho nos seus prazos.</span>
+            <div class="candles" aria-hidden="true">
+              <div class="candle-halo"></div>
+              <div class="candle" style="--height:67px"><span class="flame"></span></div>
+              <div class="candle" style="--height:42px"><span class="flame"></span></div>
+            </div>
+          </div>
+          <div class="sill" aria-hidden="true"></div>
+          <div class="window-caption"><span id="weather-label">CHUVA NA TORRE NORTE</span><button id="test-lightning" class="weather-test" type="button">Ver relâmpago</button></div>
+          <p class="window-resident" id="nora-hint"><span>Madame Nora</span> · toque para cumprimentar</p>
+        </div>
+      </section>
+      <section class="desk" id="quadro" aria-labelledby="board-title">
+        <div class="desk-top">
+          <div class="desk-heading">
+            <h2 id="board-title"><span aria-hidden="true">01 /</span>Quadro de tarefas</h2>
+            <p id="results" class="result-label" role="status" aria-live="polite">Carregando tarefas…</p>
+          </div>
+          <form class="filter-form" id="filters" role="search">
+            <div class="field field-search"><label for="search">Buscar tarefa</label><input id="search" type="search" placeholder="Título ou disciplina…" autocomplete="off"></div>
+            <div class="field"><label for="priority-filter">Prioridade</label><select id="priority-filter"><option value="">Todas</option><option value="alta">Alta</option><option value="media">Média</option><option value="baixa">Baixa</option></select></div>
+            <div class="field"><label for="sort">Ordenar por</label><select id="sort"><option value="prazo-asc">Prazo mais próximo</option><option value="prazo-desc">Prazo mais distante</option><option value="titulo">Título, de A a Z</option></select></div>
+            <button class="clear-filters" id="clear-filters" type="button">Limpar filtros</button>
+          </form>
+          <div class="bookmarks" role="group" aria-label="Filtrar por etapa">
+            <button type="button" class="bookmark" data-status-filter="" aria-pressed="true">Todas as tarefas</button>
+            <button type="button" class="bookmark" data-status-filter="a-fazer" aria-pressed="false">A fazer</button>
+            <button type="button" class="bookmark" data-status-filter="em-andamento" aria-pressed="false">Em andamento</button>
+            <button type="button" class="bookmark" data-status-filter="em-revisao" aria-pressed="false">Em revisão</button>
+            <button type="button" class="bookmark" data-status-filter="concluida" aria-pressed="false">Concluídas</button>
+          </div>
+        </div>
+        <div class="load-state" id="load-state" aria-labelledby="load-title"><h3 id="load-title">Carregando tarefas…</h3><p id="load-message">Buscando os pergaminhos do arquivo.</p><button type="button" class="clear-filters" id="load-retry" hidden>Tentar novamente</button></div>
+        <div class="board" id="board" hidden>
+          <section class="stage" data-stage="a-fazer" aria-labelledby="heading-todo">
+            <div class="stage-heading"><h3 id="heading-todo"><span class="stage-mark" aria-hidden="true"></span>A fazer</h3><span class="stage-count">02</span></div>
+            <ul class="task-list" id="list-a-fazer"></ul><p class="stage-empty" hidden>Nenhuma tarefa nesta etapa.</p>
+          </section>
+          <section class="stage" data-stage="em-andamento" aria-labelledby="heading-doing">
+            <div class="stage-heading"><h3 id="heading-doing"><span class="stage-mark" aria-hidden="true"></span>Em andamento</h3><span class="stage-count">02</span></div>
+            <ul class="task-list" id="list-em-andamento"></ul><p class="stage-empty" hidden>Nenhuma tarefa nesta etapa.</p>
+          </section>
+          <section class="stage" data-stage="em-revisao" aria-labelledby="heading-review">
+            <div class="stage-heading"><h3 id="heading-review"><span class="stage-mark" aria-hidden="true"></span>Em revisão</h3><span class="stage-count">02</span></div>
+            <ul class="task-list" id="list-em-revisao"></ul><p class="stage-empty" hidden>Nenhuma tarefa nesta etapa.</p>
+          </section>
+          <section class="stage" data-stage="concluida" aria-labelledby="heading-done">
+            <div class="stage-heading"><h3 id="heading-done"><span class="stage-mark" aria-hidden="true"></span>Concluídas</h3><span class="stage-count">02</span></div>
+            <ul class="task-list" id="list-concluida"></ul><p class="stage-empty" hidden>Nenhuma tarefa nesta etapa.</p>
+          </section>
+        </div>
+        <div class="no-results" id="no-results" hidden><h3>Nenhum pergaminho encontrado.</h3><p>Tente outro título, disciplina ou combinação de filtros.</p><button type="button" class="clear-filters" id="clear-empty">Limpar filtros</button></div>
+        <div class="desk-bottom"><p id="session-note">Alterações nesta sessão · recarregar restaura as tarefas.</p><button class="reset" id="reset-board" type="button">Restaurar quadro</button></div>
+      </section>
+      <noscript><p>Ative o JavaScript para carregar as tarefas e experimentar os efeitos. O quadro utiliza apenas arquivos deste projeto.</p></noscript>
+    </main>
+    <footer class="page-footer">
+      <p>Inspirado no universo de Harry Potter · estudo visual não oficial</p>
+      <p>Lucas Wagner Araujo · Desenvolvimento Frontend · 2026.2</p>
+    </footer>
+  </div>
+  <div class="toast" id="toast" hidden>
+    <span id="toast-message" role="status" aria-live="polite"></span>
+    <button type="button" id="undo">Desfazer</button>
+    <button type="button" class="toast-close" id="close-toast" aria-label="Fechar aviso">×</button>
+  </div>
+  <template id="task-template">
+    <li class="task-item">
+      <article class="paper">
+        <div class="folio"><span class="folio-id"></span><span class="priority"></span></div>
+        <h4></h4>
+        <p class="course"></p>
+        <div class="due-row"><span>Prazo <time></time></span><span class="due-relative"></span></div>
+        <button class="details-button" type="button" aria-expanded="false"><span>Ver detalhes</span><span class="plus" aria-hidden="true">+</span></button>
+        <div class="scroll-detail" aria-hidden="true" inert>
+          <div class="scroll-clip"><div class="scroll-inner ink-reveal"><p class="description"></p><ul class="checklist"></ul></div></div>
+        </div>
+        <div class="receipt"><span class="receipt-note"></span><span class="wax-seal" aria-hidden="true">CONCLUÍDA</span><span class="seal-ring" aria-hidden="true"></span></div>
+        <button class="task-action" type="button"></button>
+      </article>
+    </li>
+  </template>
   <script type="module" src="./script.js"></script>
 </body>
 </html>
