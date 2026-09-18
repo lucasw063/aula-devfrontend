@@ -1,74 +1,29 @@
-const statusLegenda = {
-  'a-fazer': 'A fazer',
-  'em-andamento': 'Em andamento',
-  'em-revisao': 'Em revisão',
-  'concluida': 'Concluída',
-};
+// Os estados de carregamento usam elementos existentes, sem inserir HTML dos dados.
+export function renderizarEstado(estado, tarefas) {
+  const $ = selector => document.querySelector(selector);
+  const pronto = estado.tipo === 'sucesso' && tarefas.length > 0;
+  const vazio = estado.tipo === 'sucesso' && tarefas.length === 0;
+  const carregando = estado.tipo === 'carregando';
 
-const prioridadeLegenda = {
-  baixa: 'Baixa',
-  media: 'Média',
-  alta: 'Alta',
-};
+  $('#board').hidden = !pronto;
+  $('#board').setAttribute('aria-busy', String(carregando));
+  $('#load-state').hidden = pronto;
+  $('#no-results').hidden = true;
+  $('#reset-board').disabled = !pronto;
+  document.querySelectorAll('#filters input, #filters select, #filters button, [data-status-filter]')
+    .forEach(controle => { controle.disabled = !pronto; });
 
-function formatarPrazo(prazo) {
-  const data = new Date(`${prazo}T00:00:00`);
+  if (pronto) return true;
 
-  if (Number.isNaN(data.getTime())) {
-    return prazo;
-  }
+  const titulo = carregando ? 'Carregando tarefas…'
+    : vazio ? 'O arquivo está vazio.' : 'Não foi possível carregar as tarefas.';
+  const mensagem = carregando ? 'Buscando os pergaminhos do arquivo.'
+    : vazio ? 'Nenhuma tarefa cadastrada no momento.' : estado.mensagem;
 
-  return new Intl.DateTimeFormat('pt-BR', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-  }).format(data);
-}
-
-function criarCartao(tarefa) {
-  return `
-    <li>
-      <article class="cartao cartao--${tarefa.status}">
-        <h4>${tarefa.titulo}</h4>
-        <p><strong>Prioridade:</strong> ${prioridadeLegenda[tarefa.prioridade] || tarefa.prioridade}</p>
-        <p><strong>Prazo:</strong> <time datetime="${tarefa.prazo}">${formatarPrazo(tarefa.prazo)}</time></p>
-        <p class="cartao__status">${statusLegenda[tarefa.status] || tarefa.status}</p>
-      </article>
-    </li>
-  `;
-}
-
-export function renderizarTarefas(tarefas) {
-  const quadro = document.querySelector('#quadro-tarefas');
-
-  if (!quadro) {
-    return;
-  }
-
-  const grupos = {
-    'a-fazer': [],
-    'em-andamento': [],
-    'em-revisao': [],
-    concluida: [],
-  };
-
-  tarefas.forEach((tarefa) => {
-    if (grupos[tarefa.status]) {
-      grupos[tarefa.status].push(tarefa);
-    }
-  });
-
-  quadro.innerHTML = Object.entries(statusLegenda)
-    .map(([status, titulo]) => {
-      const tarefasDoStatus = grupos[status] ?? [];
-      const itens = tarefasDoStatus.map(criarCartao).join('');
-
-      return `
-        <section class="coluna coluna--${status}" aria-labelledby="coluna-${status}">
-          <h3 id="coluna-${status}">${titulo}</h3>
-          <ul>${itens || '<li class="vazio">Nenhuma tarefa neste status.</li>'}</ul>
-        </section>
-      `;
-    })
-    .join('');
+  $('#load-title').textContent = titulo;
+  $('#load-message').textContent = mensagem;
+  $('#results').textContent = titulo;
+  $('#load-retry').hidden = carregando;
+  $('#load-retry').textContent = vazio ? 'Recarregar tarefas' : 'Tentar novamente';
+  return false;
 }
