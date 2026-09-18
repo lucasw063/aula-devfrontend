@@ -5,56 +5,104 @@
       "titulo": "Revisar roteiro da apresentação final",
       "status": "a-fazer",
       "prioridade": "alta",
-      "prazo": "2026-09-08"
+      "prazo": "2026-09-08",
+      "disciplina": "Desenvolvimento Frontend",
+      "descricao": "Preparar uma explicação clara da estrutura, dos filtros e das animações do projeto.",
+      "checklist": [
+        "Organizar os tópicos",
+        "Ensaiar a apresentação"
+      ]
     },
     {
       "id": 2,
       "titulo": "Organizar referências bibliográficas",
       "status": "a-fazer",
       "prioridade": "media",
-      "prazo": "2026-09-10"
+      "prazo": "2026-09-10",
+      "disciplina": "Metodologia Científica",
+      "descricao": "Reunir as fontes utilizadas no trabalho e revisar a lista de referências.",
+      "checklist": [
+        "Conferir autores e títulos",
+        "Revisar a formatação"
+      ]
     },
     {
       "id": 3,
       "titulo": "Implementar layout mobile do dashboard",
       "status": "em-andamento",
       "prioridade": "alta",
-      "prazo": "2026-09-05"
+      "prazo": "2026-09-05",
+      "disciplina": "Desenvolvimento Frontend",
+      "descricao": "Adaptar as colunas, filtros e fichas para telas menores sem perder legibilidade.",
+      "checklist": [
+        "Testar em 375 pixels",
+        "Conferir a navegação por teclado"
+      ]
     },
     {
       "id": 4,
       "titulo": "Corrigir fluxos de autenticação",
       "status": "em-andamento",
       "prioridade": "baixa",
-      "prazo": "2026-09-07"
+      "prazo": "2026-09-07",
+      "disciplina": "Engenharia de Software",
+      "descricao": "Revisar os estados de entrada e saída na demonstração do projeto da disciplina.",
+      "checklist": [
+        "Revisar mensagens de erro",
+        "Testar os estados da interface"
+      ]
     },
     {
       "id": 5,
       "titulo": "Validar protótipo de telas",
       "status": "em-revisao",
       "prioridade": "media",
-      "prazo": "2026-09-04"
+      "prazo": "2026-09-04",
+      "disciplina": "Interface e Experiência do Usuário",
+      "descricao": "Verificar se as informações são compreensíveis e se as principais ações são fáceis de encontrar.",
+      "checklist": [
+        "Conferir a hierarquia visual",
+        "Revisar contraste e legibilidade"
+      ]
     },
     {
       "id": 6,
       "titulo": "Revisar feedback do professor",
       "status": "em-revisao",
       "prioridade": "alta",
-      "prazo": "2026-09-03"
+      "prazo": "2026-09-03",
+      "disciplina": "Desenvolvimento Frontend",
+      "descricao": "Conferir as observações recebidas e confirmar os ajustes realizados antes da entrega.",
+      "checklist": [
+        "Ler todas as observações",
+        "Validar os ajustes"
+      ]
     },
     {
       "id": 7,
       "titulo": "Enviar checklist da semana",
       "status": "concluida",
       "prioridade": "baixa",
-      "prazo": "2026-09-01"
+      "prazo": "2026-09-01",
+      "disciplina": "Desenvolvimento Frontend",
+      "descricao": "Registrar o que foi realizado na semana e preparar a próxima etapa do projeto.",
+      "checklist": [
+        "Revisar a lista",
+        "Enviar o registro"
+      ]
     },
     {
       "id": 8,
       "titulo": "Atualizar cronograma do projeto",
       "status": "concluida",
       "prioridade": "media",
-      "prazo": "2026-08-30"
+      "prazo": "2026-08-30",
+      "disciplina": "Gestão de Projetos",
+      "descricao": "Distribuir as próximas entregas considerando o tempo disponível e as prioridades.",
+      "checklist": [
+        "Conferir os prazos",
+        "Atualizar as próximas etapas"
+      ]
     }
   ]
 }
